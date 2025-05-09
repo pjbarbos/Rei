@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Entre em contato com a [Nome da Sua Empresa] para orçamentos, dúvidas ou informações sobre equipamentos para caminhões.">
+    <title>Contato - [Nome da Sua Empresa] Equipamentos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <!-- (Repetir o header) -->
+        <div class="container">
+            <img src="img/logo.png" alt="Logo Sua Empresa Equipamentos" id="logo">
+             <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html">Sobre Nós</a></li>
+                    <li><a href="produtos.html" class="active">Produtos</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="formulario-contato">
+            <div class="container">
+                <h1>Fale Conosco</h1>
+                <p>Estamos prontos para atender você. Preencha o formulário abaixo ou utilize nossos outros canais de contato.</p>
+
+                <div class="contato-grid">
+                    <div class="form-container">
+                        <form action="enviar-email.php" method="POST"> <!-- Necessário script backend para processar -->
+                            <label for="nome">Nome Completo:</label>
+                            <input type="text" id="nome" name="nome" required>
+
+                            <label for="email">E-mail:</label>
+                            <input type="email" id="email" name="email" required>
+
+                            <label for="telefone">Telefone (com DDD):</label>
+                            <input type="tel" id="telefone" name="telefone">
+
+                            <label for="assunto">Assunto:</label>
+                            <input type="text" id="assunto" name="assunto" required>
+
+                            <label for="mensagem">Mensagem:</label>
+                            <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+
+                            <button type="submit" class="cta-button">Enviar Mensagem</button>
+                        </form>
+                    </div>
+                    <div class="info-contato">
+                        <h2>Nossos Contatos</h2>
+                        <p><strong>Telefone:</strong> (54) 99912-2776</p>
+                        <p><strong>WhatsApp:</strong> (54) 3214-1091</p>
+                        <p><strong>E-mail:</strong> contato@suaempresaequipamentos.com.br</p>
+                        <p><strong>Endereço:</strong> R. Hermes Fontes, 577 - Santa Fé, Caxias do Sul - RS, 95045-180</p>
+                        <p><strong>Horário de Atendimento:</strong> Seg a Sex, das 8h às 18h.</p>
+
+                        <!-- Mapa do Google Maps -->
+                        <div id="mapa">
+                            <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3485.3466733441396!2d-51.18864031300074!3d-29.124963511968748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951ea3754d03a60d%3A0x94ab0f86423169f4!2sRei%20Acess%C3%B3rios!5e0!3m2!1spt-BR!2sbr!4v1746812850363!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; Rei Componentes.</p></li>
+            <ul class="social-icons">
+                <li><a href="https://www.instagram.com/reicomponentes.oficial" target="_blank"><i class="fab fa-instagram"></i>reicomponentes.oficial</a></li>
+                <li><i class="fas fa-phone-alt"></i><span>(54)99912-2776</span>
+                <li><i class="fas fa-phone-alt"></i><span>(54)3214-1091</span>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+    <!-- Script para carregar o produto no assunto do formulário, se vindo da página de produto -->
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const produtoInteresse = urlParams.get('produto');
+        if (produtoInteresse && document.getElementById('assunto')) {
+            document.getElementById('assunto').value = `Orçamento para: ${produtoInteresse.replace(/([A-Z])/g, ' $1').trim()}`;
+        }
+    </script>
+</body>
+</html>
